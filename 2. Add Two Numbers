@@ -1,0 +1,54 @@
+// O(n) one iteration
+// Faster than: 8% - 50%
+
+/*
+  One more consise way to code is to new node while iteration, and move l1, l2 till NULL.
+  When adding, check l1 ? l1->val : 0.
+*/
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        if (l1 == NULL || l2 == NULL) {
+            return l1 ? l1 : l2;
+        }
+        int carry = 0;
+        ListNode * res = l1;
+        while (l1->next != NULL && l2->next != NULL) {
+            carry = addToNode (l1, l2->val + carry);
+            l1 = l1->next;
+            l2 = l2->next;
+        }
+        l1->val += l2->val; 
+        if (l1->next || l2->next) {
+            l1->next = l1->next ? l1->next : l2->next;
+            while (l1->next) {
+                carry = addToNode (l1, carry);
+                l1 = l1->next;
+            }
+        }
+        l1->val += carry;
+        if (l1->val >= 10) {
+            l1->next = new ListNode (l1->val/10);
+            l1->val %= 10;
+        }
+        return res;
+    }
+
+private:
+    // Add add to l->val, returns the a carry
+    int addToNode (ListNode* l, int add){
+        l->val += add;
+        int carry = l->val / 10;
+        l->val %= 10;
+        return carry;
+    }
+};
