@@ -1,3 +1,7 @@
+// O(n), one iteration.
+// 6ms - 9ms,
+// Faster than: 55% - 83%
+
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
