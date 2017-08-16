@@ -1,6 +1,10 @@
 // O(n) recursive
 // Faster than 15%
 
+/*
+  A faster approach is to iterative: using two pointers, whose distance == n
+*/
+
 /**
  * Definition for singly-linked list.
  * struct ListNode {
