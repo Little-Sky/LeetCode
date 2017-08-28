@@ -1,3 +1,7 @@
+// O(n)
+// Faster than 52%
+
+
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
